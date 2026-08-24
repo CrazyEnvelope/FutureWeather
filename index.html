@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/src/style.css" rel="stylesheet">
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body class="flex justify-center items-center m-[0px] h-[100vh] bg-[url(./img/background.jpg)] bg-cover text-white">
+  <div class="winfo w-[700px] h-[500px] border rounded-[20px] flex flex-col p-[20px] bg-[#341539]/60 border-[#CE53E0] ">
+    <div class="winfo-current flex flex-col">
+        <div class="winfo-current-details flex flex-row items-center">
+            <img src="./src/img/day/sunny.svg" width="48px" height="48px" class="mr-[10px]">
+            <p class="text-6xl mr-[10px]">27</p>
+            <div class="winfo-current-details-buttons flex flex-row mb-auto mr-[10px]">
+                <button type="button"><sup>o</sup>C</button>
+                <p class="ml-[10px] mr-[10px]"> | </p>
+                <button type="button"><sup>o</sup>F</button>
+            </div>
+            
+            <div class="winfo-current-details-puv flex flex-col">
+                <p>Precipitații: 15%</p>
+                <p>Umiditate: 62%</p>
+                <p>Vânt: 8 km/h</p>
+            </div>
+            <div class="winfo-current-details-tds flex flex-col ml-auto">
+                <p>Meteo</p>
+                <p>Luni</p>
+                <p>Parțial însorit</p>
+            </div>
+        </div>
+
+        <div class="winfo-current-graphics mt-[10px]">
+            <div class="winfo-current-graphics-buttons">
+                <button type="button" class="mr-[10px]">Temperatură</button>
+                <button type="button" class="mr-[10px]">Precipitații</button>
+                <button type="button" class="mr-[10px]">Vânt</button>
+            </div>
+            <div id="container" class="winfo-current-graphics-draw flex h-[210px] mt-[10px]"></div>
+        </div>
+    </div>
+
+    <div class="winfo-forecast flex flex-row justify-between items-center h-[100vh]">
+        <div class="winfo-forecast-day-1 flex flex-col justify-center">
+            <p class="flex justify-center">lun.</p>
+                <img src="./src/img/day/heavy.svg">
+            <div class="winfo-forecast-day-temp flex flex-row justify-between mt-[5px]">
+                <p class="mr-[10px]">31<sup>o</sup></p>
+                <p>20<sup>o</sup></p>
+            </div>
+        </div>
+          <div class="winfo-forecast-day-1 flex flex-col justify-center mt-[5px]">
+            <p class="flex justify-center">mar.</p>
+                <img src="./src/img/day/heavy.svg">
+            <div class="winfo-forecast-day-temp flex flex-row justify-between">
+                <p class="mr-[10px]">31<sup>o</sup></p>
+                <p>20<sup>o</sup></p>
+            </div>
+        </div>
+         <div class="winfo-forecast-day-1 flex flex-col justify-center mt-[5px]">
+            <p class="flex justify-center">mie.</p>
+                <img src="./src/img/day/heavy.svg">
+            <div class="winfo-forecast-day-temp flex flex-row justify-between">
+                <p class="mr-[10px]">31<sup>o</sup></p>
+                <p>20<sup>o</sup></p>
+            </div>
+        </div>
+         <div class="winfo-forecast-day-1 flex flex-col justify-center mt-[5px]">
+            <p class="flex justify-center">joi</p>
+                <img src="./src/img/day/heavy.svg">
+            <div class="winfo-forecast-day-temp flex flex-row justify-between">
+                <p class="mr-[10px]">31<sup>o</sup></p>
+                <p>20<sup>o</sup></p>
+            </div>
+        </div>
+         <div class="winfo-forecast-day-1 flex flex-col justify-center mt-[5px]">
+            <p class="flex justify-center">vin.</p>
+                <img src="./src/img/day/heavy.svg">
+            <div class="winfo-forecast-day-temp flex flex-row justify-between">
+                <p class="mr-[10px]">31<sup>o</sup></p>
+                <p>20<sup>o</sup></p>
+            </div>
+        </div>
+        <div class="winfo-forecast-day-1 flex flex-col justify-center mt-[5px]">
+            <p class="flex justify-center">sâm.</p>
+                <img src="./src/img/day/heavy.svg">
+            <div class="winfo-forecast-day-temp flex flex-row justify-between">
+                <p class="mr-[10px]">31<sup>o</sup></p>
+                <p>20<sup>o</sup></p>
+            </div>
+        </div>
+         <div class="winfo-forecast-day-1 flex flex-col justify-center mt-[5px]">
+            <p class="flex justify-center">dum.</p>
+                <img src="./src/img/day/heavy.svg">
+            <div class="winfo-forecast-day-temp flex flex-row justify-between">
+                <p class="mr-[10px]">31<sup>o</sup></p>
+                <p>20<sup>o</sup></p>
+            </div>
+        </div>
+    </div>
+  </div>
+  <footer class="fixed bottom-0 left-0 w-full flex justify-center py-[10px] text-sm text-white/80">
+    <p>&copy; 2026 Stanciu Stefan Alexandru - Designed & build with care</p>
+  </footer>
+</body>
+
+</html>
