@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/src/style.css" rel="stylesheet" />
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/weather.js"></script>
     <script type="module" src="/src/datadisplay.js"></script>
   </head>
   <body
@@ -15,38 +16,36 @@
     >
       <div class="winfo-current flex flex-col">
         <div class="winfo-current-details flex flex-row items-center">
-          <img
+          <img id = "currentImgWeather"
             src="./src/img/day/sunny.svg"
             width="48px"
             height="48px"
             class="mr-[10px]"
           />
-          <p class="text-6xl mr-[10px]">27</p>
+          <p id="temperature" class="text-6xl mr-[10px]">27</p>
           <div
             class="winfo-current-details-buttons flex flex-row mb-auto mr-[10px]"
           >
-            <button type="button"><sup>o</sup>C</button>
-            <p class="ml-[10px] mr-[10px]">|</p>
-            <button type="button"><sup>o</sup>F</button>
+            <p id="unit"><sup>o</sup>C</button>
           </div>
 
           <div class="winfo-current-details-puv flex flex-col">
-            <p>Precipitații: 15%</p>
-            <p>Umiditate: 62%</p>
-            <p>Vânt: 8 km/h</p>
+            <p id="precipitation"">Precipitații: 15%</p>
+            <p id="humidity">Umiditate: 62%</p>
+            <p id="wind">Vânt: 8 km/h</p>
           </div>
           <div class="winfo-current-details-tds flex flex-col ml-auto">
             <p>Meteo</p>
-            <p>Luni</p>
-            <p>Parțial însorit</p>
+            <p id="day">Luni</p>
+            <p id="code">Parțial însorit</p>
           </div>
         </div>
 
         <div class="winfo-current-graphics mt-[10px]">
           <div class="winfo-current-graphics-buttons">
-            <button type="button" class="mr-[10px]">Temperatură</button>
-            <button type="button" class="mr-[10px]">Precipitații</button>
-            <button type="button" class="mr-[10px]">Vânt</button>
+            <button id="tempButton" type="button" class="mr-[10px]">Temperatură</button>
+            <button id="precipButton" type="button" class="mr-[10px]">Precipitații</button>
+            <button id="windButton" type="button" class="mr-[10px]">Vânt</button>
           </div>
           <div
             id="container"

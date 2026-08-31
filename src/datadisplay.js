@@ -1,6 +1,10 @@
 import { weatherDataCleaner } from "./weather.js";
+import { setData } from "./main.js";
+import { getDataFromAPI } from "./weather.js";
+import { getImage } from "./utils.js";
 
 let data = {};
+let rawData = {};
 
 function addDayInForecast(date) {
   const winfo_forecast_day_1 = document.createElement("div");
@@ -33,6 +37,11 @@ function addDayInForecast(date) {
   newp.textContent = getDay(date);
   newp_1.textContent = data[date]["Max_Temp"] + "ᵒ";
   newp_2.textContent = data[date]["Min_Temp"] + "ᵒ";
+  winfo_forecast_day_1.addEventListener(
+    "click",
+    () => setData(date, data, rawData),
+    false,
+  );
 
   var currentDiv = document.getElementById("forecast");
   currentDiv.appendChild(winfo_forecast_day_1);
@@ -40,12 +49,13 @@ function addDayInForecast(date) {
 
 async function showWeatherData() {
   data = await weatherDataCleaner();
+  rawData = await getDataFromAPI();
   for (let date in data) {
     addDayInForecast(date);
   }
 }
 
-function getDay(date) {
+export function getDay(date) {
   let actualDate = new Date(date);
   let day = "";
   switch (actualDate.getDay()) {

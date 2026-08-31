@@ -1,12 +1,16 @@
-export async function weatherDataCleaner() {
-  var result = {};
-
+export async function getDataFromAPI() {
+  let result = {};
   try {
     const response = await fetch("./src/data.json");
     result = await response.json();
   } catch (err) {
     console.error(err);
   }
+  return result;
+}
+
+export async function weatherDataCleaner() {
+  let result = await getDataFromAPI();
 
   let dates = new Set(
     result["hourly"]["time"].map((b) => b.substring(0, b.indexOf("T"))),
@@ -23,12 +27,17 @@ export async function weatherDataCleaner() {
   for (const date of dates) {
     let dayData = {};
     for (const hour of hours) {
-      let temperature = result["hourly"]["temperature_2m"][hourIndex];
-      let humidity = result["hourly"]["relative_humidity_2m"][hourIndex];
-      let wind = result["hourly"]["wind_speed_10m"][hourIndex];
+      let temperature = Math.round(
+        result["hourly"]["temperature_2m"][hourIndex],
+      );
+      let humidity = Math.round(
+        result["hourly"]["relative_humidity_2m"][hourIndex],
+      );
+      let wind = Math.round(result["hourly"]["wind_speed_10m"][hourIndex]);
       let code = result["hourly"]["weather_code"][hourIndex];
-      let precipitation =
-        result["hourly"]["precipitation_probability"][hourIndex];
+      let precipitation = Math.round(
+        result["hourly"]["precipitation_probability"][hourIndex],
+      );
 
       hourIndex++;
 
@@ -40,7 +49,7 @@ export async function weatherDataCleaner() {
         Temperature: temperature,
         Precipitation: precipitation,
         Wind: wind,
-        Hymidity: humidity,
+        Humidity: humidity,
         Code: code,
       };
     }
@@ -59,6 +68,5 @@ export async function weatherDataCleaner() {
     beautifulWeatherData[date]["Min_Temp"] = Math.round(Math.min(...temp));
   }
 
-  //console.log(JSON.stringify(beautifulWeatherData, undefined, 2));
   return beautifulWeatherData;
 }
