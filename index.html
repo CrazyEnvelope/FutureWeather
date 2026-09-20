@@ -10,14 +10,20 @@
   </head>
   <body
     class="flex justify-center items-center m-[0px] h-[100vh] bg-[url(./img/background.jpg)] bg-cover text-white"
-  >
+  > 
+
+  <div class="fixed top-10 left-0 w-full flex justify-center py-[10px] text-sm text-white/80">
+  <input id="location" type="text" placeholder="Search.." name="search" class="w-[300px] border-[2px] border-t-[#CE53E0] border-l-[#CE53E0] border-b-[#CE53E0] border-r-0 p-[5px]">
+  <button id="searchButton" type="submit" class="bg-[#CE53E0]/60 border-t-[1px] border-b-[1px] border-r-[1px] border-t-[#CE53E0] border-b-[#CE53E0] border-r-[#CE53E0] pl-[40px] pr-[40px] pt-[5px] pb-[5px]"><img src="src/img/search.png" width="24px" height="24px"></button>
+</div>
+
     <div
       class="winfo w-[700px] h-[500px] border rounded-[20px] flex flex-col p-[20px] bg-[#341539]/60 border-[#CE53E0]"
     >
       <div class="winfo-current flex flex-col">
         <div class="winfo-current-details flex flex-row items-center">
           <img id = "currentImgWeather"
-            src="./src/img/day/sunny.svg"
+            src="./src/img/day_icon/01d@2x.png"
             width="48px"
             height="48px"
             class="mr-[10px]"
@@ -30,30 +36,32 @@
           </div>
 
           <div class="winfo-current-details-puv flex flex-col">
-            <p id="precipitation"">Precipitații: 15%</p>
-            <p id="humidity">Umiditate: 62%</p>
-            <p id="wind">Vânt: 8 km/h</p>
+            <p id="precipitation"">Precipitation: 0%</p>
+            <p id="humidity">Humidity: 0%</p>
+            <p id="wind">Wind: 0 km/h</p>
           </div>
           <div class="winfo-current-details-tds flex flex-col ml-auto">
             <p>Meteo</p>
-            <p id="day">Luni</p>
-            <p id="code">Parțial însorit</p>
+            <p id="day">Mon.</p>
+            <p id="code">Sunny</p>
+            
           </div>
         </div>
 
         <div class="winfo-current-graphics mt-[10px]">
           <div class="winfo-current-graphics-buttons">
-            <button id="tempButton" type="button" class="mr-[10px]">Temperatură</button>
-            <button id="precipButton" type="button" class="mr-[10px]">Precipitații</button>
-            <button id="windButton" type="button" class="mr-[10px]">Vânt</button>
+            <button id="tempButton" type="button" class="mr-[10px]">Temperature</button>
+            <button id="precipButton" type="button" class="mr-[10px]">Precipitations</button>
+            <button id="windButton" type="button" class="mr-[10px]">Wind</button>
           </div>
+          
           <div
             id="container"
             class="winfo-current-graphics-draw flex h-[210px] mt-[10px]"
           ></div>
         </div>
       </div>
-
+      <div id="message" class="winfo-msg ml-auto mr-auto mt-[-40px]">Please enter a location in the search bar!</div>
       <div
         id="forecast"
         class="winfo-forecast flex flex-row justify-between items-center h-[100vh]"

@@ -5,6 +5,7 @@ import { getImage, getStatus } from "./utils";
 let date = "";
 let weatherData = {};
 let rawAPIData = {};
+const SELECTED_CLASSES = ["border-b-4", "border-[#CE53E0]"];
 
 const mode = {
   TEMPERATURE: "Temperature",
@@ -16,6 +17,8 @@ export function setData(dayDate, weatherDataImported, rawData) {
   date = dayDate;
   weatherData = weatherDataImported;
   rawAPIData = rawData;
+  const temperatureButtonElement = document.querySelector("#tempButton");
+  if (temperatureButtonElement) temperatureButtonElement.click();
 }
 
 function addEventsToButtons() {
@@ -25,19 +28,40 @@ function addEventsToButtons() {
 
   temperatureButton.addEventListener(
     "click",
-    () => showChart(date, weatherData, mode.TEMPERATURE),
+    () => {
+      removeClickDesignButtons("tempButton");
+      removeClickDesignButtons("precipButton");
+      removeClickDesignButtons("windButton");
+
+      temperatureButton.classList.add(...SELECTED_CLASSES);
+      showChart(date, weatherData, mode.TEMPERATURE);
+    },
     false,
   );
 
   precipitationButton.addEventListener(
     "click",
-    () => showChart(date, weatherData, mode.PRECIPITATION),
+    () => {
+      removeClickDesignButtons("tempButton");
+      removeClickDesignButtons("precipButton");
+      removeClickDesignButtons("windButton");
+
+      precipitationButton.classList.add(...SELECTED_CLASSES);
+      showChart(date, weatherData, mode.PRECIPITATION);
+    },
     false,
   );
 
   windButton.addEventListener(
     "click",
-    () => showChart(date, weatherData, mode.WIND),
+    () => {
+      removeClickDesignButtons("tempButton");
+      removeClickDesignButtons("precipButton");
+      removeClickDesignButtons("windButton");
+
+      windButton.classList.add(...SELECTED_CLASSES);
+      showChart(date, weatherData, mode.WIND);
+    },
     false,
   );
 }
@@ -46,13 +70,11 @@ function showChart(date, weatherData, mode) {
   let hours = Object.keys(weatherData[date]["Hours"]);
   let values = [];
 
-  console.log(JSON.stringify(weatherData, null, 2));
-
   for (let hour in weatherData[date]["Hours"]) {
     values.push(weatherData[date]["Hours"][hour][mode]);
   }
 
-  Highcharts.chart("container", {
+  const chart = Highcharts.chart("container", {
     chart: {
       type: "areaspline",
     },
@@ -110,6 +132,7 @@ function showChart(date, weatherData, mode) {
               wind.innerHTML =
                 "Wind: " +
                 weatherData[date]["Hours"][this.category]["Wind"] +
+                " " +
                 rawAPIData["hourly_units"]["wind_speed_10m"];
               day.innerHTML = getDay(date);
               let codeFromData =
@@ -132,8 +155,15 @@ function showChart(date, weatherData, mode) {
       },
     ],
   });
+
+  const firstPoint = chart.series[0].points[0];
+  if (firstPoint) firstPoint.firePointEvent("click");
 }
 
-function showDayData(date, weatherData) {}
+function removeClickDesignButtons(idButton) {
+  document
+    .querySelectorAll("#" + idButton)
+    .forEach((el) => el.classList.remove(...SELECTED_CLASSES));
+}
 
 addEventsToButtons();
